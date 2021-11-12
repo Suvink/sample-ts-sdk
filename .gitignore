@@ -1,6 +1,7 @@
 .DS_Store
 node_modules
 /driver-app/node_modules
+/driver-app-backup/node_modules
 /dist
 
 # local env files

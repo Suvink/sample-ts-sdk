@@ -1,28 +1,72 @@
+import { AsgardeoAuthClient, Store } from '@asgardeo/auth-js';
 import axios from 'axios';
+import { LocalStore, MemoryCacheStore, MemoryStore, SessionStore } from "./stores";
+import { Storage } from './constants/storage';
 
-//Using a dummy Pokemon API at https://pokeapi.co/
-const BASE_URL: string = 'https://pokeapi.co/api/v2'; 
+const initiateStore = (store: Storage | undefined): Store => {
+    switch (store) {
+        case Storage.LocalStorage:
+            return new LocalStore();
+        case Storage.SessionStorage:
+            return new SessionStore();
+        case Storage.BrowserMemory:
+            return new MemoryStore();
+        case Storage.MemoryCache:
+            return new MemoryCacheStore();
+        default:
+            return new SessionStore();
+    }
+};
 
-export function getPokemonById(id: number): Promise<object> {
+export function initializeApp(config: any, storeLib: any): any {
+    //TODO: Add config validation
+    // if(config.hasOwnProperty(''))
+    const store: Store = initiateStore(config.storage);
+    const auth = new AsgardeoAuthClient(store);
+    auth.initialize(config);
+    return auth;
+}
+
+export function getAuthURL(auth: any): Promise<object> {
     return new Promise((resolve, reject) => {
-        axios
-            .get(`${BASE_URL}/pokemon/${id}`)
-            .then((resp) => {
-                resolve(resp.data);
-            })
-            .catch(reject);
+        auth.getAuthorizationURL().then((url: any) => {
+            resolve(url);
+        }).catch((reject));
     });
 }
 
-export function getPokemonTypeById(id: number): Promise<object> {
+export function requestAccessToken(authorizationCode: string, sessionState: string, auth: any): Promise<object> {
+    console.log(authorizationCode)
     return new Promise((resolve, reject) => {
-        axios
-            .get(`${BASE_URL}/type/${id}`)
-            .then((resp) => {
-                resolve(resp.data);
-            })
-            .catch(reject);
+        auth.requestAccessToken(authorizationCode, sessionState).then((response: any) => {
+            resolve(response);
+        }).catch((reject));
     });
 }
 
-export default { getPokemonById, getPokemonTypeById };
+export function getIDToken(auth: any): Promise<string> {
+    return new Promise((resolve, reject) => {
+        auth.getIDToken().then((response: any) => {
+            resolve(response);
+        }).catch((reject));
+    });
+}
+
+export async function getLogoutURL(auth: any): Promise<object> {
+    const signOutURL = await auth.getSignOutURL();
+    return signOutURL;
+}
+
+export async function getDL(auth: any): Promise<object> {
+    const dataLayer = auth.getDataLayer();
+    return dataLayer;
+}
+
+export async function getOIDCEndpoints(auth: any): Promise<object> {
+    const endpoints = await auth.getOIDCServiceEndpoints();
+    console.log(endpoints)
+    return endpoints;
+}
+
+//How to rename these?
+export default { initializeApp, getAuthURL, requestAccessToken, getLogoutURL, getOIDCEndpoints, getIDToken, getDL };
