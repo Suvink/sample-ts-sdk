@@ -22,7 +22,7 @@
     "typescript": "^4.4.4"
   },
   "dependencies": {
-    "@asgardeo/auth-js": "file:../asgardeo-auth-js-sdk/lib",
+    "@asgardeo/auth-js": "file:../auth-js-wrapper/lib",
     "axios": "^0.24.0",
     "memory-cache": "^0.2.0"
   }

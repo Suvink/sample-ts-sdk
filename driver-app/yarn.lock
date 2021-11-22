@@ -2,7 +2,7 @@
 # yarn lockfile v1
 
 
-"@asgardeo/auth-js@file:../../asgardeo-auth-js-sdk/lib":
+"@asgardeo/auth-js@file:../../auth-js-wrapper/lib":
   version "0.2.17"
   dependencies:
     base64url "^3.0.1"
@@ -3459,9 +3459,9 @@ commander@^4.1.1:
   integrity sha512-NOKm8xhkzAjzFx8B2v5OAHT+u5pRQc2UCa2Vq9jYL/31o2wi9mxBA7LIFs3sV5VSC49z6pEhfbMULvShKj26WA==
 
 common-tags@^1.8.0:
-  version "1.8.0"
-  resolved "https://registry.yarnpkg.com/common-tags/-/common-tags-1.8.0.tgz#8e3153e542d4a39e9b10554434afaaf98956a937"
-  integrity sha512-6P6g0uetGpW/sdyUy/iQQCbFF0kWVMSIVSyYz7Zgjcgh8mgw8PQzDNZeyZ5DQ2gM7LBoZPHmnjz8rUthkBG5tw==
+  version "1.8.1"
+  resolved "https://registry.yarnpkg.com/common-tags/-/common-tags-1.8.1.tgz#ebf4973edf7d476a9c19646f5f04a45f95796029"
+  integrity sha512-uOZd85rJqrdEIE/JjhW5YAeatX8iqjjvVzIyfx7JL7G5r9Tep6YpYT9gEJWhWpVyDQEyzukWd6p2qULpJ8tmBw==
 
 commondir@^1.0.1:
   version "1.0.1"
@@ -4341,9 +4341,9 @@ ejs@^2.6.1:
   integrity sha512-7vmuyh5+kuUyJKePhQfRQBhXV5Ce+RnaeeQArKu1EAMpL3WbgMt5WG6uQZpEVvYSSsxMXRKOewtDk9RaTKXRlA==
 
 electron-to-chromium@^1.3.564, electron-to-chromium@^1.3.886:
-  version "1.3.894"
-  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.894.tgz#54554ecb40d40ddac7241c4a42887e86180015d8"
-  integrity sha512-WY8pA4irAZ4cm/Pr7YFPtPLVqj3nU6d0SbfoHF6M7HZNONfPdAnYAarumqQ75go2LuN72uO9wGuCEqnfya/ytg==
+  version "1.3.895"
+  resolved "https://registry.yarnpkg.com/electron-to-chromium/-/electron-to-chromium-1.3.895.tgz#9b0f8f2e32d8283bbb200156fd5d8dfd775f31ed"
+  integrity sha512-9Ww3fB8CWctjqHwkOt7DQbMZMpal2x2reod+/lU4b9axO1XJEDUpPMBxs7YnjLhhqpKXIIB5SRYN/B4K0QpvyQ==
 
 elliptic@^6.5.3:
   version "6.5.4"
@@ -9143,11 +9143,6 @@ raf@^3.4.1:
   dependencies:
     performance-now "^2.1.0"
 
-random-string-generator@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/random-string-generator/-/random-string-generator-1.0.0.tgz#1d442c1db40efa463c50c8424a3e53667e3106c7"
-  integrity sha512-7m146WZiY84+6b5Y1tw5cEGistLChiHCoJyQxQ3BP4EMdUOpsrhZuC+K5dsJhq98cYJeFb6+9fA96pFsF07YVQ==
-
 randombytes@^2.0.0, randombytes@^2.0.1, randombytes@^2.0.5, randombytes@^2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/randombytes/-/randombytes-2.1.0.tgz#df6f84372f0270dc65cdf6291349ab7a473d4f2a"
@@ -10790,7 +10785,7 @@ ts-pnp@1.2.0, ts-pnp@^1.1.6:
 ts-sdk-test@../:
   version "1.0.0"
   dependencies:
-    "@asgardeo/auth-js" "file:../../../Library/Caches/Yarn/v6/npm-ts-sdk-test-1.0.0-4dd32bd6-5ea4-439c-ae0b-d44d9e0c5fa8-1636626592558/node_modules/asgardeo-auth-js-sdk/lib"
+    "@asgardeo/auth-js" "file:../../../AppData/Local/Yarn/Cache/v6/npm-ts-sdk-test-1.0.0-ef75bb6b-f2a1-4918-9db4-8051f51df23f-1636696345551/node_modules/auth-js-wrapper/lib"
     axios "^0.24.0"
     memory-cache "^0.2.0"
 

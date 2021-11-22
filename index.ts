@@ -2,8 +2,10 @@ import { AsgardeoAuthClient, Store } from '@asgardeo/auth-js';
 import axios from 'axios';
 import { LocalStore, MemoryCacheStore, MemoryStore, SessionStore } from "./stores";
 import { Storage } from './constants/storage';
+import cache from 'memory-cache';
 
 const initiateStore = (store: Storage | undefined): Store => {
+    
     switch (store) {
         case Storage.LocalStorage:
             return new LocalStore();
@@ -14,14 +16,16 @@ const initiateStore = (store: Storage | undefined): Store => {
         case Storage.MemoryCache:
             return new MemoryCacheStore();
         default:
-            return new SessionStore();
+            return new MemoryCacheStore();
     }
 };
 
 export function initializeApp(config: any, storeLib: any): any {
     //TODO: Add config validation
     // if(config.hasOwnProperty(''))
+    console.log(config)
     const store: Store = initiateStore(config.storage);
+    console.log("store ", store)
     const auth = new AsgardeoAuthClient(store);
     auth.initialize(config);
     return auth;
@@ -37,6 +41,8 @@ export function getAuthURL(auth: any): Promise<object> {
 
 export function requestAccessToken(authorizationCode: string, sessionState: string, auth: any): Promise<object> {
     console.log(authorizationCode)
+    console.log('keys',cache.keys())
+    console.log('instance',cache.get('config_data-instance_0'))
     return new Promise((resolve, reject) => {
         auth.requestAccessToken(authorizationCode, sessionState).then((response: any) => {
             resolve(response);

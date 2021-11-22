@@ -5,6 +5,7 @@ import './App.css';
 // const testSDK = require('ts-sdk-test');
 import testSDK from 'ts-sdk-test';
 
+
 function App() {
 
   const auth = testSDK.initializeApp({
@@ -14,7 +15,7 @@ function App() {
     "signOutRedirectURL": "http://localhost:3000",
     "enableOIDCSessionManagement": true,
     "scope": ["openid", "profile"],
-    "validateIDToken": false
+    "validateIDToken": false,
   });;
 
   useEffect(() => {
@@ -52,7 +53,6 @@ function App() {
     })
   }
 
-  
 
 
 
